@@ -9,8 +9,7 @@
         let calendar = $('#calendar').fullCalendar({
             editable: true,
             events: SITEURL + "/fullcalendareventmaster",
-            displayEventTime: true,
-            editable: true,
+            displayEventTime: false,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;

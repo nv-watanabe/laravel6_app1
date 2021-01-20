@@ -35,7 +35,6 @@
             editable: true,
             events: SITEURL + "/fullcalender",
             displayEventTime: false,
-            editable: true,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;
@@ -69,7 +68,9 @@
                                     start: start,
                                     end: end,
                                     allDay: allDay
-                                },true);
+                                },
+                                true
+                            );
 
                             calendar.fullCalendar('unselect');
                         }
