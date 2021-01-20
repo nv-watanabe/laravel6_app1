@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FullCalenderController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +46,14 @@ Route::get('/setEvents', 'EventController@setEvents');
 
 Route::post('/ajax/addEvent', 'EventController@addEvent');
 Route::post('/ajax/editEventDate', 'EventController@editEventDate');
+
+// fullcalendar1
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+
+
+// fullcalendar2
+Route::get('/fullcalendareventmaster','FullCalendarEventMasterController@index');
+Route::post('/fullcalendareventmaster/create','FullCalendarEventMasterController@create');
+Route::post('/fullcalendareventmaster/update','FullCalendarEventMasterController@update');
+Route::post('/fullcalendareventmaster/delete','FullCalendarEventMasterController@destroy');
