@@ -22,8 +22,8 @@
             select: function (start, end, allDay) {
                 let title = prompt('Event Title:');
                 if (title) {
-                    let start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                    let end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
                         url: SITEURL + "/fullcalendareventmaster/create",
                         data: 'title=' + title + '&start=' + start + '&end=' + end,
@@ -45,8 +45,8 @@
                 calendar.fullCalendar('unselect');
             },
             eventDrop: function (event, delta) {
-                let start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                let end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                 $.ajax({
                     url: SITEURL + '/fullcalendareventmaster/update',
                     // data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,

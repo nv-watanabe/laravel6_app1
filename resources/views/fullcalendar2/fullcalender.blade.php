@@ -14,7 +14,9 @@
 </head>
 <body>
 <div class="container">
+{{--    @php dd($this->Date); @endphp--}}
     <div class="response"></div>
+{{--    <div>{{ $this[0]->Date }}</div>--}}
     <div id='calendar'></div>
 </div>
 </body>
