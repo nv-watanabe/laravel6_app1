@@ -15,37 +15,6 @@ class FullCalendarEventMasterController extends Controller
         // 未使用
 //        $calendar = Fullcalendar::whereMonth('start', '01')->get();
 
-        // 成功 各要素に「color」を追加, 「set_number」を上書き
-//        $k = Reservation::select('id','title', 'start', 'end')->get();
-//        $array = $k->toArray();
-//        $add_txt = '予約：';
-//        $color = array('color' => '#fae9e8');
-//
-//        $test = collect(array_map(function ($k) use ($add_txt, $color) {
-//            $s = $add_txt . $k['title'];
-//            $new_title = array('title' => $s);
-//
-////            array_push($s);
-//            return array_merge($k, $new_title, $color);
-//        }, $array));
-////
-//        dd($test, $array);
-//      ----
-
-        // 成功 各要素に「color」のみを追加
-//        $k = Reservation::select('id','title as stock_number', 'start', 'end')->get();
-//        $array = $k->toArray();
-//        $color = array('color' => '#fae9e8');
-//
-//        $test = collect(array_map(function ($k) use ($color) {
-//            return array_merge($k, $color);
-//        }, $array));
-//
-//        dd($test);
-//      ----
-
-//        dd(collect($test));
-
         if(request()->ajax())
         {
             $start = (!empty($request->start)) ? ($request->start) : ('');
@@ -88,36 +57,29 @@ class FullCalendarEventMasterController extends Controller
         return view('fullcalendar2.fullcalender');
     }
 
-    public function reservation(Request $request)
-    {
-        if ($request->ajax()) {
-            $start = (!empty($request->start)) ? ($request->start) : ('');
-            $end = (!empty($request->end)) ? ($request->end) : ('');
-            $data = Reservation::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
-//            $data .= {color: "#fae9e8"};
-            $data->put('color', '#fae9e8');
-            dd($data);
-
-            return response()->json($data);
-        }
-
-    }
-
     public function create(Request $request)
     {
-        $insertArr = [ 'title' => $request->title,
+//        dd($request->all());
+        $insertArr = [
+            'title' => $request->title,
             'start' => $request->start,
             'end' => $request->end
         ];
         $event = Fullcalendar::create($insertArr);
+
         return response()->json($event);
     }
 
     public function update(Request $request)
     {
         $where = array('id' => $request->id);
-        $updateArr = ['title' => $request->title,'start' => $request->start, 'end' => $request->end];
+        $updateArr = [
+            'title' => mb_substr($request->title, 3),
+            'start' => $request->start,
+            'end' => $request->end
+        ];
         $event  = Fullcalendar::where($where)->update($updateArr);
+
         return response()->json($event);
     }
 

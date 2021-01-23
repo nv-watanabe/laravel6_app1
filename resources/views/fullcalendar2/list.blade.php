@@ -12,6 +12,8 @@
             // events: [ SITEURL + "/fullcalendareventmaster", SITEURL + "/reservation"],
             events: SITEURL + "/fullcalendareventmaster",
             eventLimit: 2,
+            dayMaxEventRows: 2,
+            dayMaxEvents: 2,
             displayEventTime: false,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
@@ -83,10 +85,6 @@
             }
         });
     });
-    // function displayMessage(message) {
-    //     $(".response").html(message);
-    //     setInterval(function() { $(".success").fadeOut(); }, 1000);
-    // }
 
     function displayMessage(message) {
         toastr.success(message, 'Event');

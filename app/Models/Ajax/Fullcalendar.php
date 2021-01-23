@@ -6,13 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fullcalendar extends Model
 {
-    //
-//    public function getStockNumberAttribute()
-//    {
-//        return $this->attributes['stock_number'] === 'yes';
-//    }
-//
-//
+    protected $guarded = ['id'];
     /**
      * fullcalendar用タイトルの取得
      *
