@@ -1,6 +1,7 @@
 <script>
     $(document).ready(function () {
         let SITEURL = "{{url('/')}}";
+        let SITEURL2 = "{{url('/')}}";
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -8,7 +9,17 @@
         });
         let calendar = $('#calendar').fullCalendar({
             editable: true,
-            events: SITEURL + "/fullcalendareventmaster",
+            // events: [ SITEURL + "/fullcalendareventmaster", SITEURL + "/reservation"],
+            events:
+            // events: [{
+                SITEURL + "/fullcalendareventmaster",
+            // },{
+            //         id: 999,
+            //         title: "Hiking (repeated)",
+            //         start: new Date(r, n, t + 3, 15, 0)
+            // }],
+            // },{[SITEURL2 + "/reservation"]}],
+            // SITEURL2 + "/reservation",
             displayEventTime: false,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {

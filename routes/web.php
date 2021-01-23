@@ -54,6 +54,7 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 // fullcalendar2
 Route::get('/fullcalendareventmaster','FullCalendarEventMasterController@index');
+Route::get('/reservation','FullCalendarEventMasterController@reservation');
 Route::post('/fullcalendareventmaster/create','FullCalendarEventMasterController@create');
 Route::post('/fullcalendareventmaster/update','FullCalendarEventMasterController@update');
 Route::post('/fullcalendareventmaster/delete','FullCalendarEventMasterController@destroy');

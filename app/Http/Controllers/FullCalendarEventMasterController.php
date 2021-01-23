@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ajax\Fullcalendar;
+use App\Models\Ajax\Reservation;
 use DebugBar\DebugBar;
 use Illuminate\Http\Request;
 //use Redirect,Response;
@@ -11,75 +12,71 @@ class FullCalendarEventMasterController extends Controller
 {
     public function index(Request $request)
     {
-//        $calendar = Fullcalendar::find(3);
-//        $calendar = Fullcalendar::stock()->get();
-        $calendar = Fullcalendar::get();
-//        dd($calendar[1]);
-//        dd($calendar[0]->append('stock_number')->toArray());
-//        $d = $calendar[1]->append('stock_number')->toArray();
-//        dd(response()->json($d));
+        // 未使用
+//        $calendar = Fullcalendar::whereMonth('start', '01')->get();
 
+        // 成功 各要素に「color」を追加, 「set_number」を上書き
+        $k = Reservation::select('id','title as stock_number', 'start', 'end')->get();
+        $array = $k->toArray();
+        $add_txt = '予約：';
+        $color = array('color' => '#fae9e8');
 
-////        dd($item);
-////        dd($item[0]->title);
-//        $collection = collect([
-//            ['name' => '山田', 'age' => 22],
-//            ['name' => '鈴木', 'age' => 25],
-//            ['name' => '佐藤', 'age' => 18],
-//            ['name' => '田中', 'age' => 30],
-//            ['name' => '山本', 'age' => 16]
-//        ]);
+        $test = collect(array_map(function ($k) use ($add_txt, $color) {
+            $s = $add_txt . $k['stock_number'];
+            $new_title = array('stock_number' => $s);
 
-//        $multiplied = $collection->map(function($item, $key){
+//            array_push($s);
+            return array_merge($k, $new_title, $color);
+        }, $array));
 //
-//            $item['age_unit'] = $item['age'] .'才';
-////            dd($item);
-////            Debugbar::info($item);
-//
-//        });
+        dd($test, $array);
+//      ----
 
-//        foreach ($calendar as $key => $cal) {
-//            dd(response()->json(['stock_number' => $cal->title]));
-//        }
+        // 成功 各要素に「color」のみを追加
+        $k = Reservation::select('id','title as stock_number', 'start', 'end')->get();
+        $array = $k->toArray();
+        $color = array('color' => '#fae9e8');
 
-//        dd($calendar);
-//        dd($calendar[0]->stock_number);
-//        $user = \App\User::find(1);
-//        dd($user->name);
-//        $calendar->map(function ($item) {
-//                $item['stock_number'] = $item['title'];
-//
-//                return $item;
-//            });
+        $test = collect(array_map(function ($k) use ($color) {
+            return array_merge($k, $color);
+        }, $array));
 
+        dd($test);
+//      ----
 
-//        dd(response()->json(['stock_number' => $calendar->title]));
+//        dd(collect($test));
+
         if(request()->ajax())
         {
             $start = (!empty($request->start)) ? ($request->start) : ('');
             $end = (!empty($request->end)) ? ($request->end) : ('');
 //            $data = Fullcalendar::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get(['id', 'title', 'start', 'end']);
-            $data = Fullcalendar::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
-//        dd($calendar);
-//        dd(Fullcalendar::stockNumber());
+//            $data = Fullcalendar::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
 
-//            foreach ($data as $key => $cal) {
-//                $data2 = collect($data[$key]->setAppends(['stock_number'])->toArray());
-////                dd(collect($cal->setAppends(['stock_number'])->toArray()));
-//////                return response()->json(['stock_number' => $cal->title, 'start' => $cal->start, 'end' => $cal->end]);
-////        dd($cal->stock_number);
-//////                return response()->json(['stock_number' => $cal->title, 'start' => $cal->start, 'end' => $cal->end]);
-//            dd($data2);
-//             return response()->json($data2);
-//            }
-//                return response()->json(['stock_number' => $data->title, 'start' => $data->start, 'end' => $data->end]);
+            $data = Reservation::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
 
-//        dd($data[0]->setAppends(['stock_number'])->toArray());
-//            return response()->json($data2);
-//            return response()->json($item);
+            $data->put('color', '#fae9e8');
+//            $data->merge(['color' => '#fae9e8']);
+//            $data->union(['color' => '#fae9e8']);
+
             return response()->json($data);
         }
         return view('fullcalendar2.fullcalender');
+    }
+
+    public function reservation(Request $request)
+    {
+        if ($request->ajax()) {
+            $start = (!empty($request->start)) ? ($request->start) : ('');
+            $end = (!empty($request->end)) ? ($request->end) : ('');
+            $data = Reservation::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
+//            $data .= {color: "#fae9e8"};
+            $data->put('color', '#fae9e8');
+            dd($data);
+
+            return response()->json($data);
+        }
+
     }
 
     public function create(Request $request)
