@@ -10,16 +10,8 @@
         let calendar = $('#calendar').fullCalendar({
             editable: true,
             // events: [ SITEURL + "/fullcalendareventmaster", SITEURL + "/reservation"],
-            events:
-            // events: [{
-                SITEURL + "/fullcalendareventmaster",
-            // },{
-            //         id: 999,
-            //         title: "Hiking (repeated)",
-            //         start: new Date(r, n, t + 3, 15, 0)
-            // }],
-            // },{[SITEURL2 + "/reservation"]}],
-            // SITEURL2 + "/reservation",
+            events: SITEURL + "/fullcalendareventmaster",
+            eventLimit: 2,
             displayEventTime: false,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
