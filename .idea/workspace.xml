@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="71deb504-3b25-4166-968f-28664bf1451b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/fullcalendar/fullcalender.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fullcalendar/fullcalender.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FullCalendarEventMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FullCalendarEventMasterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/fullcalendar2/fullcalender.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fullcalendar2/fullcalender.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/fullcalendar2/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fullcalendar2/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +42,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="home" />
+                    <option name="lastUsedInstant" value="1611241980" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
                     <option name="lastUsedInstant" value="1611154266" />
@@ -176,7 +182,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="ssh.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -195,7 +201,8 @@
       <updated>1610265221205</updated>
       <workItem from="1610265224874" duration="18310000" />
       <workItem from="1610460711783" duration="8005000" />
-      <workItem from="1611153035967" duration="5897000" />
+      <workItem from="1611153035967" duration="32253000" />
+      <workItem from="1611416598089" duration="30580000" />
     </task>
     <task id="LOCAL-00001" summary="Add Fullcalendar">
       <created>1611157949184</created>
@@ -204,7 +211,42 @@
       <option name="project" value="LOCAL" />
       <updated>1611157949184</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add Fullcalendar2">
+      <created>1611159076770</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611159076770</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Accessor">
+      <created>1611242080582</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611242080582</updated>
+    </task>
+    <task id="LOCAL-00004" summary="各要素に「color」を追加, 「set_number」を上書き">
+      <created>1611421686610</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611421686610</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update stock &amp; reservation">
+      <created>1611424663143</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611424663143</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update stock &amp; reservation2">
+      <created>1611428223727</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611428223727</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +280,11 @@
     <MESSAGE value="Add AjaxUser" />
     <MESSAGE value="Add AjaxUser2" />
     <MESSAGE value="Add Fullcalendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Fullcalendar" />
+    <MESSAGE value="Add Fullcalendar2" />
+    <MESSAGE value="Add Accessor" />
+    <MESSAGE value="各要素に「color」を追加, 「set_number」を上書き" />
+    <MESSAGE value="update stock &amp; reservation" />
+    <MESSAGE value="update stock &amp; reservation2" />
+    <option name="LAST_COMMIT_MESSAGE" value="update stock &amp; reservation2" />
   </component>
 </project>

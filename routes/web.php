@@ -58,3 +58,6 @@ Route::get('/reservation','FullCalendarEventMasterController@reservation');
 Route::post('/fullcalendareventmaster/create','FullCalendarEventMasterController@create');
 Route::post('/fullcalendareventmaster/update','FullCalendarEventMasterController@update');
 Route::post('/fullcalendareventmaster/delete','FullCalendarEventMasterController@destroy');
+
+Route::get('/fullcalendareventmaster/get-data/{id}','FullCalendarEventMasterController@getData');
+Route::post('/fullcalendareventmaster/stock-update','FullCalendarEventMasterController@stockUpdate');

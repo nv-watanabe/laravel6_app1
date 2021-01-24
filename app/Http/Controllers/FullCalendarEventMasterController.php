@@ -6,6 +6,7 @@ use App\Models\Ajax\Fullcalendar;
 use App\Models\Ajax\Reservation;
 use DebugBar\DebugBar;
 use Illuminate\Http\Request;
+use Validator;
 //use Redirect,Response;
 
 class FullCalendarEventMasterController extends Controller
@@ -35,6 +36,8 @@ class FullCalendarEventMasterController extends Controller
 
                 return array_merge($getStock, $stockTitle, $stockColor);
             }, $arrayStock);
+
+//            dd($Stock);
 
             // Reservation
             $getReservation = Reservation::whereDate('start', '>=', $start)->whereDate('end', '<=', $end)->get();
@@ -68,6 +71,38 @@ class FullCalendarEventMasterController extends Controller
         $event = Fullcalendar::create($insertArr);
 
         return response()->json($event);
+    }
+
+    public function getData($id)
+    {
+        $data = Fullcalendar::find($id);
+
+        return response()->json($data);
+    }
+
+    public function stockUpdate(Request $request)
+    {
+//            dd($request->all());
+        if($request->ajax()) {
+            $rules = [
+                'stock_number' => 'required',
+            ];
+
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json([
+                    'error' => $error->errors()->all()
+                ]);
+            }
+
+            Fullcalendar::where('id', $request->stock_id)->update([
+                'title' => $request->stock_number,
+            ]);
+
+        }
+        return response()->json('data');
+//        $data = Fullcalendar::find($id);
+
     }
 
     public function update(Request $request)
