@@ -104,6 +104,7 @@
                         // $('#stock_form').addClass('update-form');
                         // $('form').attr('id', 'update-form');
                         $('.stock-form').attr({id: 'update-form',  action: '/fullcalendareventmaster/stock-update'});
+                        // $('.stock-form').attr({id: 'update-form',  action: '/fullcalendareventmaster/stock-update'});
                         $('#stock_id').val(data.id);
                         $('#stock_number').val(data.title);
                         $('#stock_btn').val("update").text('更新');
@@ -156,26 +157,6 @@
             }
         });
 
-
-
-        // let stock = $('.fc-event-container').find('.fc-title').text('在庫')
-        // if (stock) {
-            $("span.fc-title").on("click", function () {
-                $('.event-update').show()
-                // console.log(stock)
-            })
-        // }
-
-        // $(function(){
-        //     $(window).on('load', function(){
-        //         $(".fc-content:contains('在庫')").each(function(){
-        //             var a = $(this).text();
-        //             $(this).closest('.fc-event-container').addClass('stock-event')
-        //             console.log(a);
-        //         });
-        //     });
-        // });
-
     });
 
     $(function(){
@@ -192,26 +173,34 @@
         });
 
         $.ajax({
-            url: SITEURL + '/fullcalendareventmaster/stock-update',
+            url: '/fullcalendareventmaster/stock-update',
             type: "POST",
-            data: $(this).serialize(),
+            // data: $(this).serialize(),
+            data:{
+                stock_number: $('input[name="stock_number"]').val(),
+                stock_id: $('input[name="stock_id"]').val()
+            },
             dataType: 'json',
             beforeSend: function () {
                 // $('#option_update').attr('disabled', false);
             },
-            success: function (data)
+            success: function (response)
             {
-                if(data.error) {
-                    let error_html = '';
-                    for(let count = 0; count < data.error.length; count++) {
-                        error_html += '<p>'+data.error[count]+'</p>';
-                    }
-                    $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                } else {
-                    // $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                    window.location.reload();
+                if (parseInt(response) > 0) {
                     displayMessage("Updated Successfully");
                 }
+
+                // if(data.error) {
+                //     let error_html = '';
+                //     for(let count = 0; count < data.error.length; count++) {
+                //         error_html += '<p>'+data.error[count]+'</p>';
+                //     }
+                //     $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
+                // } else {
+                //     // $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
+                //     window.location.reload();
+                //     displayMessage("Updated Successfully");
+                // }
 
                 // $('#option_update').attr('disabled', false);
             },
@@ -223,20 +212,21 @@
     })
 
     $(".event-delete").on("click", function () {
+        let stock_id = $('input[name="stock_id"]').val();
         let deleteMsg = confirm("Do you really want to delete?");
-        // if (deleteMsg) {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: SITEURL + '/fullcalendareventmaster/delete',
-        //         data: "&id=" + event.id,
-        //         success: function (response) {
-        //             if (parseInt(response) > 0) {
-        //                 $('.js-calendar').fullCalendar('removeEvents', event.id);
-        //                 displayMessage("Deleted Successfully");
-        //             }
-        //         }
-        //     });
-        // }
+
+        if (deleteMsg) {
+            $.ajax({
+                type: "POST",
+                url: '/fullcalendareventmaster/delete',
+                data:{ id: stock_id },
+                success: function (response) {
+                    if (parseInt(response) > 0) {
+                        displayMessage("Deleted Successfully");
+                    }
+                }
+            });
+        }
     })
 
     function displayMessage(message) {

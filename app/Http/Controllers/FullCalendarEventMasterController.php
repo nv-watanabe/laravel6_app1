@@ -83,7 +83,7 @@ class FullCalendarEventMasterController extends Controller
     public function stockUpdate(Request $request)
     {
 //            dd($request->all());
-        if($request->ajax()) {
+//        if($request->ajax()) {
             $rules = [
                 'stock_number' => 'required',
             ];
@@ -95,12 +95,12 @@ class FullCalendarEventMasterController extends Controller
                 ]);
             }
 
-            Fullcalendar::where('id', $request->stock_id)->update([
+            $event = Fullcalendar::where('id', $request->stock_id)->update([
                 'title' => $request->stock_number,
             ]);
 
-        }
-        return response()->json('data');
+        return response()->json($event);
+//        }
 //        $data = Fullcalendar::find($id);
 
     }

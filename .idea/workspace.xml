@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71deb504-3b25-4166-968f-28664bf1451b" name="Default Changelist" comment="">
+    <list default="true" id="71deb504-3b25-4166-968f-28664bf1451b" name="Default Changelist" comment="add codebase plugins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FullCalendarEventMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FullCalendarEventMasterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/fullcalendar2/fullcalender.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fullcalendar2/fullcalender.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/fullcalendar2/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fullcalendar2/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +200,7 @@
       <workItem from="1610265224874" duration="18310000" />
       <workItem from="1610460711783" duration="8005000" />
       <workItem from="1611153035967" duration="32253000" />
-      <workItem from="1611416598089" duration="30580000" />
+      <workItem from="1611416598089" duration="33093000" />
     </task>
     <task id="LOCAL-00001" summary="Add Fullcalendar">
       <created>1611157949184</created>
@@ -246,7 +244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611428223727</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update stock-form">
+      <created>1611482261559</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611482261559</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add codebase plugins">
+      <created>1611482894655</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611482894655</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +297,8 @@
     <MESSAGE value="各要素に「color」を追加, 「set_number」を上書き" />
     <MESSAGE value="update stock &amp; reservation" />
     <MESSAGE value="update stock &amp; reservation2" />
-    <option name="LAST_COMMIT_MESSAGE" value="update stock &amp; reservation2" />
+    <MESSAGE value="update stock-form" />
+    <MESSAGE value="add codebase plugins" />
+    <option name="LAST_COMMIT_MESSAGE" value="add codebase plugins" />
   </component>
 </project>
