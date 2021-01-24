@@ -44,7 +44,7 @@
             selectHelper: true,
             eventMouseover: function(e, $e) {
                 // Get Event id
-                console.log(e.id);
+                // console.log(e.id);
 
                 // Add 「stock-event」class
                 let hasStock = $(".fc-content:contains('在庫：')");
@@ -76,6 +76,34 @@
                     );
                 }
                 calendar.fullCalendar('unselect');
+            },
+            selectAllow: function(selectInfo) {
+                //since we're only interested in whole days, set all times to the start/end of their respective day
+                selectInfo.start.startOf("day");
+                selectInfo.end.startOf("day");
+                // console.log(selectInfo.start)
+
+                var evts = $(".js-calendar").fullCalendar("clientEvents", function(evt) {
+                // console.log(evt.start)
+                    var st = evt.start.clone().startOf("day");
+                    if (evt.end) {
+                        var ed = evt.end.clone().startOf("day");
+                    }else {
+                        ed = st;
+                    }
+
+                    // console.log(evt.end);
+                    // console.log(st);
+
+                    //return true if the event overlaps with the selection
+                    //　前日,当日,後日 編集不可
+                    // return (selectInfo.start.isSameOrBefore(ed) && selectInfo.end.isSameOrAfter(st));
+                    //　当日 編集不可
+                    return (selectInfo.start.isSame(st) || selectInfo.end.isSame(ed));
+                });
+
+                //return true if there are no events overlapping that day
+                return evts.length == 0;
             },
             eventDrop: function (event, delta) {
                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
@@ -109,7 +137,7 @@
                         $('#stock_number').val(data.title);
                         $('#stock_btn').val("update").text('更新');
                     })
-                    $('.event-update').show()
+                    $('.stock-contents').show()
                 }
                 console.log(calEvent.id)
 
@@ -121,21 +149,21 @@
 
                 // double clickで開く
                 // $(".stock-event").on("click", function () {
-                //     $('.event-update').show()
+                //     $('.stock-contents').show()
                 //
                 //
                 // })
                 // }
                 // if ($('.fc-event-container').hasClass('stock-event')) {
                 // if ($('.fc-event-container .stock-event')) {
-                //     $('.event-update').show()
+                //     $('.stock-contents').show()
                 // } else {
-                //     $('.event-update').hide()
+                //     $('.stock-contents').hide()
                 // }
 
                 // let stock = $('.fc-event-container').find('.fc-title').text('在庫')
                 // if (stock) {
-                // $('.event-update').show()
+                // $('.stock-contents').show()
 
 
 
@@ -161,7 +189,7 @@
 
     $(function(){
         $(".close-event").on("click", function () {
-            $('.event-update').hide()
+            $('.stock-contents').hide()
         })
     });
 

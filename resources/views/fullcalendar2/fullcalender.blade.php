@@ -16,7 +16,7 @@
 {{--    <script src="{{ asset('vendor/assets/js/pages/be_comp_calendar.min.js') }}"></script>--}}
 
     <style>
-        .event-update {display: none}
+        .stock-contents {display: none}
     </style>
 </head>
 <body>
@@ -55,7 +55,7 @@
                             <!-- Event List -->
                             <form class="stock-form" method="POST">
                                 @csrf
-                                <div class="block-content event-update">
+                                <div class="block-content stock-contents">
                                     <div class="form-group">
                                         <div class="form-material">
                                             <input type="hidden" id="stock_id" name="stock_id">
